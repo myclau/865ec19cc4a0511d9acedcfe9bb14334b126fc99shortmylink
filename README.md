@@ -223,7 +223,7 @@ Do not have record of the shortenUrl
 2. I assumpt the Random Generation of the shortUrl is unique.
 3. The api will not check if the url request to newurl is valid or not
 
-# Optimo design
+# Optimal design
 ![Test Image 1](https://raw.githubusercontent.com/myclau/865ec19cc4a0511d9acedcfe9bb14334b126fc99shortmylink/master/shortenurl_api_design_v1.1.PNG)
 
 1. should have a loadbalancer in front of the apis
