@@ -1,0 +1,35 @@
+{
+  "name": "shortenurl",
+  "version": "1.0.0",
+  "description": "API for shorten url",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node --inspect-brk server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myclau/865ec19cc4a0511d9acedcfe9bb14334b126fc99shortmylink.git"
+  },
+  "keywords": [
+    "node",
+    "jwt",
+    "auth"
+  ],
+  "author": "Matthias Lau",
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "request": "^2.88.0",
+    "mongodb": "^3.3.3",
+    "assert": "^2.0.0"
+  }
+}
