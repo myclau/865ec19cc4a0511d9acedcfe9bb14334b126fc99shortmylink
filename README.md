@@ -224,7 +224,7 @@ Do not have record of the shortenUrl
 3. The api will not check if the url request to newurl is valid or not
 
 # Optimo design
-![Test Image 1](https://raw.githubusercontent.com/myclau/865ec19cc4a0511d9acedcfe9bb14334b126fc99shortmylink/master/shortenurl_api_design.PNG)
+![Test Image 1](https://raw.githubusercontent.com/myclau/865ec19cc4a0511d9acedcfe9bb14334b126fc99shortmylink/master/shortenurl_api_design_v1.1.PNG)
 
 1. should have a loadbalancer in front of the apis
 2. the api can be replicate as many as need (can use k8s or something like aws autoscaling group)
