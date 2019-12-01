@@ -87,6 +87,30 @@ Removing network cryptoq3_default
 | MONGO_DB_NAME | the db name (shortenurl) |
 | MONGO_COLLECTION_NAME | the collection name in db |
 
+# MongoDB Design
+
+1. In here will keep it simple, the api will only using one db and one collection.
+2. you will need a db (lets say name: shortenurl)
+3. need a user account that can have readwrite access to that db
+4. the api itself will create the collection if not exist is the db, base on the environment variable of MONGO_COLLECTION_NAME in the api contianer.
+5. For the startup config for the containerize mongodb are follow (which is the file `init-mongo.js`)
+```js
+db.createUser(
+  {
+    user : "mongouser",
+    pwd : "mongopassword",
+    roles : [
+      {
+        role : "readWrite",
+        db : "shortenurl"
+      }
+    ] 
+  }
+)
+```
+6. for the info in the `init-mongo.js` will all connected to the environment value of MONGO_USER MONGO_PASSWORD MONGO_DB_NAME
+7. For the containerize version of the mongodb provided here , the `init-mongo.js` will place in `/docker-entrypoint-initdb.d/init-mongo.js` of the mongodb instance 
+8. once the containeroize mongo are startup,it will automatic load the js to init the db and the user.
 
 # Expected Result
 1. To create shortenUrl (In this example my host is 192.168.56.101 and the container is using 8000 port to expose service)
