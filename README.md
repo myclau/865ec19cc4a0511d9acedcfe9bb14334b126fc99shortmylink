@@ -222,3 +222,11 @@ Do not have record of the shortenUrl
 1. if you want to use https instead of http, you need to setup a lb and map the service to this api and config the environment varible of LB_DOMAIN
 2. I assumpt the Random Generation of the shortUrl is unique.
 3. The api will not check if the url request to newurl is valid or not
+
+# Optimo design
+![Test Image 1](https://raw.githubusercontent.com/myclau/865ec19cc4a0511d9acedcfe9bb14334b126fc99shortmylink/master/shortenurl_api_design.PNG)
+
+1. should have a loadbalancer in front of the apis
+2. the api can be replicate as many as need (can use k8s or something like aws autoscaling group)
+3. set one of the mongo db is enough for this api as the information is quite narrow to only its function, but need to consider the resilient
+
