@@ -87,6 +87,17 @@ Removing network cryptoq3_default
 | MONGO_DB_NAME | the db name (shortenurl) |
 | MONGO_COLLECTION_NAME | the collection name in db |
 
+# API Logic
+Endpoint: /newurl
+1. if endpoint /newurl receive request with the url json object, will do a search on the collection to see if the url exist.
+2. if not will check if the collection are created if not create it and add the url with the random generated 9 digtal shortenUrl to the collection
+3. as step (1) also have the shortenUrl in the output object, so just put it in the response object and send it out
+
+Endpoint: ^/[a-zA-Z0-9]{9}
+1. use the request originalUrl are variable and seaarch in the mongo collection
+2. if can find the entry just send redirect 304  to the url
+3. if not return 500 and send out message `Do not have record of the shortenUrl`
+
 # MongoDB Design
 
 1. In here will keep it simple, the api will only using one db and one collection.
@@ -210,3 +221,4 @@ Do not have record of the shortenUrl
 # limitation & assumption
 1. if you want to use https instead of http, you need to setup a lb and map the service to this api and config the environment varible of LB_DOMAIN
 2. I assumpt the Random Generation of the shortUrl is unique.
+3. The api will not check if the url request to newurl is valid or not
