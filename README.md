@@ -111,6 +111,36 @@ db.createUser(
 6. for the info in the `init-mongo.js` will all connected to the environment value of MONGO_USER MONGO_PASSWORD MONGO_DB_NAME
 7. For the containerize version of the mongodb provided here , the `init-mongo.js` will place in `/docker-entrypoint-initdb.d/init-mongo.js` of the mongodb instance 
 8. once the containeroize mongo are startup,it will automatic load the js to init the db and the user.
+9. More info and config of the containerize mongoDB provided are follow ( most configurable config as in environment variable and can be edit in `docker-compose.yml`):
+MongoDB version: latest (4.2.1)
+exposed port (container): 27017
+```yaml
+services:
+  mongo:
+    restart: always
+    image: mongo
+    container_name: "mongodb"
+    environment:
+     - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+     - MONGO_INITDB_ROOT_PASSWORD=mongopassword
+     - MONGO_INITDB_DATABASE=shortenurl
+    volumes:
+    	# this is init script to create the db with non-admin user
+     - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+     - ~/mongo-volume:/data/db
+
+    ports:
+     - 27017:27017
+  # mongo express is  not nessary
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: mongoadmin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: mongopassword
+```
 
 # Expected Result
 1. To create shortenUrl (In this example my host is 192.168.56.101 and the container is using 8000 port to expose service)
