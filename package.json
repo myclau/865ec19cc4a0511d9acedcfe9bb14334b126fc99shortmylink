@@ -30,6 +30,7 @@
     "jsonwebtoken": "^8.3.0",
     "request": "^2.88.0",
     "mongodb": "^3.3.3",
-    "assert": "^2.0.0"
+    "assert": "^2.0.0",
+    "express-rate-limit": "^5.0.0"
   }
 }

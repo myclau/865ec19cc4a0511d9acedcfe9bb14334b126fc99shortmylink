@@ -2,7 +2,7 @@ const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
 const assert = require('assert');
-
+const rateLimit = require("express-rate-limit");
 
 var MongoClient = require('mongodb').MongoClient; 
 // Connection URL
@@ -115,6 +115,14 @@ function main () {
   let handlers = new HandlerGenerator();
   const port = process.env.PORT || 8000;
   app.use(bodyParser.json());
+  //rate limit of api calls
+  const limiter = rateLimit({
+	    windowMs: ${API_RATE_LIMIT_WINDOWS_MINUTES} * 60 * 1000, // minutes
+	    max: ${API_RATE_LIMIT_CALLS} // limit each IP to max requests per windowMs
+  });
+	 
+  //  apply to all requests
+  app.use(limiter);
   // Routes & Handlers
   app.post('/newurl', handlers.newurl );
   app.get('^/[a-zA-Z0-9]{9}', handlers.redirectOrgurl );

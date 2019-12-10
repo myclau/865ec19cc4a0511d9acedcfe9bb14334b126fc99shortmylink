@@ -86,6 +86,8 @@ Removing network cryptoq3_default
 | MONGO_PORT | the port of mongo db |
 | MONGO_DB_NAME | the db name (shortenurl) |
 | MONGO_COLLECTION_NAME | the collection name in db |
+| API_RATE_LIMIT_WINDOWS_MINUTES | The api rate limit windows in minutes default is 1 |
+| API_RATE_LIMIT_CALLS | The api rate limit of calls per IP, default is 5  |
 
 
 # Expected Result

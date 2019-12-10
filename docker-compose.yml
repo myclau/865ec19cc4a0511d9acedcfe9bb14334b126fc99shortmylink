@@ -36,5 +36,7 @@ services:
      - MONGO_PORT=27017
      - MONGO_DB_NAME=shortenurl
      - MONGO_COLLECTION_NAME=mapping
+     - API_RATE_LIMIT_WINDOWS_MINUTES=1
+     - API_RATE_LIMIT_CALLS=5
     ports:
      - 8000:8000
