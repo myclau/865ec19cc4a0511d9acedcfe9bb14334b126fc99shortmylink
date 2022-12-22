@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "express": "^4.16.3",
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^9.0.0",
     "request": "^2.88.0",
     "mongodb": "^3.3.3",
     "assert": "^2.0.0",
